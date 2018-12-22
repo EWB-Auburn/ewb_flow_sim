@@ -147,19 +147,10 @@ end
 % NOTE: Diameter and velocity are given in ft and ft/s, respectively
 function f = friction_factor(diameter, velocity)
 global rough;
-re = reynolds(diameter, velocity);
-% Haaland approximation
-f = (-1.8 * log10( ...
-    (rough / diameter / 3.7)^1.11 + (6.9 / re) ...
-    ))^-2;
-end
-
-% Calculate the Reynolds number for a given velocity and diameter, and
-% using global values of density and viscosity
-function re = reynolds(diameter, velocity)
 global rho;
 global mu;
-re = rho * velocity * diameter / mu;
+re = reynolds(rho, velocity, diameter, mu);
+f = haaland_friction_factor(re, rough);
 end
 
 
