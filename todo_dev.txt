@@ -3,7 +3,6 @@ TODO List for dev branch
  Last update: 2018-12-22
 ========================
 ### Incomplete ###
-Break structure definition into own file
 Fully integrate hose minor head loss
 Calculate head losses at PRV
 Getter for arbitrary link/node (useful for debug)
@@ -12,3 +11,4 @@ Add structure def for lower tank
 
 ### Completed ###
 Break sprinkler curve fit into own file
+Break structure definition into own file
