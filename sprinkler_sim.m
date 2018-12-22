@@ -150,7 +150,7 @@ global rough;
 global rho;
 global mu;
 re = reynolds(rho, velocity, diameter, mu);
-f = haaland_friction_factor(re, rough);
+f = haaland_friction_factor(re, rough / diameter);
 end
 
 
