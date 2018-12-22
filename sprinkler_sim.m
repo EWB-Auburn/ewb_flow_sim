@@ -135,9 +135,8 @@ end
 
 function flow = get_leaf_flow(index)
 global leaf_list;
-global gamma;
 l = leaf_list{index};
-flow = l.flow_function(l.head * gamma);
+flow = l.flow_function(l.head);
 end
 
 % Given a node, generate a list including the local leaf (if any), as well
@@ -233,8 +232,8 @@ global g;
 % Define the leaves first
 leaf_count = 32;
 leaves = cell(leaf_count, 1);
-global a;
-hose_flow = @(v) a * v.^0.5;
+hose_flow = sprinkler_1_data();
+a = hose_flow(1);
 hose_velocity = @(flow) flow / (pi/4 * (0.5/12)^2);
 hose_loss = @(v) hose_k * hose_velocity(hose_flow(v))^2/2/g;
 flow_func = @(v) min(a * (v - hose_loss(v)).^0.5, leaf_limit);
