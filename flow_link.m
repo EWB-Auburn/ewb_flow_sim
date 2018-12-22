@@ -2,14 +2,14 @@ classdef flow_link
     properties
         % Intrensic parameters
         name                        string
-        downstream_node             flow_node   % links connected to lower end
-        diameter                    double      % pipe diameter, ft
-        length                      double      % pipe length, ft
-        delta_z                     double      % height differential end-over-end, ft
-        all_downstream_leaves(:, 1) int8        % list of leaf indices
+        downstream_node             flow_node % node connected to lower end
+        diameter                    double    % pipe diameter, ft
+        length                      double    % pipe length, ft
+        delta_z                     double    % elevation change
+        all_downstream_leaves(:, 1) int8      % list of leaf indices
         % Primary state parameters
-        pressure_iteration          uint8 = 0;  % last time pressure values were recalculated
-        flow_iteration              uint8 = 0;  % last time flow values were recalculated
+        pressure_iteration          uint8 = 0;  % iteration counter
+        flow_iteration              uint8 = 0;  % iteration counter
         velocity                    double = 0; % fluid velocity, ft/s
         head_in                     double = 0; % heat feet at inlet, ft
         % Secondary state parameters
