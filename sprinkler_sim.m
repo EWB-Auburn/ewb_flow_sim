@@ -5,7 +5,6 @@ global rho;
 global gamma;
 global rough;
 global g;
-global a;
 global leaf_limit;
 global pressure_update_alpha;
 global hose_k;
@@ -18,13 +17,6 @@ g     = 32.2    ; % acceleration of gravity, ft/s^2
 leaf_limit = 5 / 448.83117;
 pressure_update_alpha = 0.75;
 hose_k = 1.08 * 50; % K/ft * ft
-
-% Data for sprinkler 1
-p_data = (5:2.5:35) .* 12^2; % psf
-v_dot_data = [6.83, 7.77, 8.75, 9.53, 10.30, 10.82, 11.87, 12.29, ...
-    12.84, 13.18, 13.53, 14.70, 15.53] ./ 12^3; % ft^3/s
-[a, R2] = square_root_fit(p_data, v_dot_data);
-v_dot = @(p) a .* p.^0.5; % Function for the curve fit
 
 % Initialize the system structure
 global leaf_list;
@@ -50,8 +42,6 @@ for i = 1:length(leaf_list)
     fprintf('\n');
 end
 
-% fprintf('\n\n\n');
-% dump_node(root);
 
 
 % Given a node in the system, update the inbound head of every connected
