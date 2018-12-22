@@ -9,7 +9,7 @@ y  = @(a, x) a .* x.^0.5; % This equation is the form desired
 y_bar = sum(y_in) / length(y_in); % Average of the input data
 R2 = @(a) 1 - ... % Computes statistical R2 value for a given `a`
     sum((y_in - y(a, x_in)).^2) / ...
-    sum((y(a, x_in) - y_bar).^2);
+    sum((y_in - y_bar).^2);
 mid = @(u, v) (u + v) / 2; % midpoint
 
 for ind = 1:100
