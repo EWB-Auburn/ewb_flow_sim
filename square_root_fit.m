@@ -1,9 +1,10 @@
 % Given a dataset (x_in, y_in), find the least squares curve fit of the form
 % y = a * sqrt(x), and also return the R^2 parameter for the curve fit.
-% This curve fit assumes that the coefficient `a` is strictly positive.
+% This curve fit assumes that the coefficient `a` is strictly positive and
+% is in the range 1e-12 < a < 1e+12.
 function [a_out, R2_out] = square_root_fit(x_in, y_in)
-a_lo = 1e-4; % Initial lower bound
-a_hi = 1e+3; % Initial upper bound
+a_lo = 1e-12; % Initial lower bound
+a_hi = 1e+12; % Initial upper bound
 
 y  = @(a, x) a .* x.^0.5; % This equation is the form desired
 y_bar = sum(y_in) / length(y_in); % Average of the input data
