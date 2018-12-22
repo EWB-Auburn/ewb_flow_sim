@@ -4,8 +4,8 @@
 %
 % Heads and flow rates use the foot-poundforce-second system of units.
 function func = sprinkler_1_data()
-% Constants
-gamma = 62.43; % spc. weight, lbf/ft^3
+% Load system parameters
+parameters;
 
 % Original data
 p_orig = (5:2.5:35); % Pressure, psi
@@ -14,7 +14,7 @@ v_dot_orig = [6.83, 7.77, 8.75, 9.53, 10.30, 10.82, 11.87, 12.29, ...
 
 % Convert to more useful units
 p_psf = p_orig .* 12^2; % Pressure, psf
-head_ft = p_psf ./ gamma; % Head, ft
+head_ft = p_psf ./ gam; % Head, ft
 v_dot_ft3s = v_dot_orig ./ 12^3; % Volumetric flowrate, ft^3/s
 
 % Curve fit

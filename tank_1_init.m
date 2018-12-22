@@ -1,10 +1,7 @@
 %
 function [root, leaves] = tank_1_init()
-% Constants
-gamma = 62.43; % spc. weight of water at 40 deg F, lbf/ft^3
-leaf_limit = 5 / 448.83117; % maximum flowrate through leaves, ft^3/s
-hose_k = 1.08 * 50; % minor head loss coefficient for 50 feet of hose
-g = 32.2; % acceleration of gravity, ft/s^2
+% Load system parameters
+parameters;
 
 % Define the leaves first
 leaf_count = 32;
@@ -32,7 +29,7 @@ k_turn = 1;
 AN = flow_node('AN', [], 32);
 AMAN = flow_link('AMAN', AN, pvc('1/2'), 330, -160.08, countl(AN), k_thru);
 AM = flow_node('AM', AMAN, 31);
-% AM.head_limit = 30*144/gamma;
+% AM.head_limit = 30*144/gam;
 
 ALAM = flow_link('ALAM', AM, pvc('1'), 100, 0, countl(AM), k_thru);
 AL = flow_node('AL', ALAM, 30);
@@ -67,7 +64,7 @@ AA = flow_node('AA', [AAAB, AAAC, AAAD], -1);
 ZAA = flow_link('ZAA', AA, pvc('1'), 49.5, -117.79, countl(AA), k_thru);
 
 Z = flow_node('Z', ZAA, 22);
-Z.head_limit = 30*144/gamma; % This is where the PRV is installed
+Z.head_limit = 30*144/gam; % This is where the PRV is installed
 
 WZ = flow_link('WZ', Z, pvc('1'), 49.5, 0, countl(Z), k_thru);
 

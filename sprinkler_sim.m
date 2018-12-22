@@ -1,22 +1,6 @@
 clear;
-% Defined values
-global mu;
-global rho;
-global gamma;
-global rough;
-global g;
-global leaf_limit;
-global pressure_update_alpha;
-global hose_k;
-% Properties of water at 40 deg F
-mu    = 32.34e-6; % viscosity, lbf*s/ft^2
-rho   =  1.94   ; % density, slug/ft^3
-gamma = 62.43   ; % spc. gravity, lbf/ft^3
-rough = 20e-6   ; % upper bound roughness for PVC, ft
-g     = 32.2    ; % acceleration of gravity, ft/s^2
-leaf_limit = 5 / 448.83117;
-pressure_update_alpha = 0.75;
-hose_k = 1.08 * 50; % K/ft * ft
+% Load system parameters
+parameters;
 
 init = @tank_1_init;
 % Initialize the system structure
@@ -52,7 +36,7 @@ end
 % link.
 function node_out = update_node_pressure(node_in)
 global leaf_list;
-global pressure_update_alpha;
+parameters;
 % Exit condition
 if node_in.head_limit > 0 % then a PRV is present at this node
     node_in.head = min(node_in.head, node_in.head_limit);
@@ -80,7 +64,7 @@ end
 function link_out = update_link_pressure(link_in)
 % Note that there is no formal exit condition, because every link should be
 % connected to nodes at both the upstream and downstream ends
-global g;
+parameters;
 link_in.head_out = max(0, link_in.head_in - link_in.delta_z - ...
     link_in.velocity^2 / 2 / g * head_loss_coefficient(link_in));
 link_in.pressure_iteration = link_in.pressure_iteration + 1;
@@ -146,9 +130,7 @@ end
 % which are considered to be constant throughout the system.
 % NOTE: Diameter and velocity are given in ft and ft/s, respectively
 function f = friction_factor(diameter, velocity)
-global rough;
-global rho;
-global mu;
+parameters;
 re = reynolds(rho, velocity, diameter, mu);
 f = haaland_friction_factor(re, rough / diameter);
 end
