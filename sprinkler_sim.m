@@ -114,26 +114,6 @@ l = leaf_list{index};
 flow = l.flow_function(l.head);
 end
 
-% Given a flow link, calculate the coefficient of head loss, or the
-% coefficient of v^2/2g for the modified Bernoulli equation. This
-% coefficient is given by f*L/D + K, and includes both major and 3K-method
-% minor head losses
-function c = head_loss_coefficient(link)
-f = friction_factor(link.diameter, link.velocity);
-c = f * link.length / link.diameter + link.K;
-end
-
-
-% Given a pipe diameter and fluid velocity, calculate the friction factor
-% for major head loss. This function uses values for roughness, fluid
-% density, and viscosity defined in the file header, as these are values
-% which are considered to be constant throughout the system.
-% NOTE: Diameter and velocity are given in ft and ft/s, respectively
-function f = friction_factor(diameter, velocity)
-parameters;
-re = reynolds(rho, velocity, diameter, mu);
-f = haaland_friction_factor(re, rough / diameter);
-end
 
 
 function n = dump_node(node)
