@@ -5,10 +5,10 @@ TODO List for dev branch
 ### Incomplete ###
 Fully integrate hose minor head loss
 Calculate head losses at PRV
-Getter for arbitrary link/node (useful for debug)
 More verbose results reporting (CSV/JSON/XML?)
 Add structure def for lower tank
 
 ### Completed ###
 Break sprinkler curve fit into own file
 Break structure definition into own file
+Getter for arbitrary link/node (useful for debug)
