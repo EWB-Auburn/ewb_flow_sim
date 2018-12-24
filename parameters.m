@@ -13,3 +13,8 @@ pressure_update_alpha = 0.75;
 
 leaf_limit = 5 / 448.83117; % maximum flowrate through leaves, ft^3/s
 hose_k = 1.08 * 50; % minor head loss coefficient for 50 feet of hose
+
+% Give a function handle here that will initialize the system structure.
+% This function must return both a root node and a cell array of leaves
+% (`root` and `leaves` respectively).
+init = @tank_1_init;

@@ -2,7 +2,6 @@ clear;
 % Load system parameters
 parameters;
 
-init = @tank_1_init;
 % Initialize the system structure
 global leaf_list;
 [root, leaf_list] = init();
