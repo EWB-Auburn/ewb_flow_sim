@@ -3,7 +3,7 @@
 % input, and returns volumetric flowrate as an output.
 %
 % Heads and flow rates use the foot-poundforce-second system of units.
-function func = sprinkler_1_data()
+function [func, R2] = sprinkler_1_data()
 % Load system parameters
 parameters;
 
@@ -18,6 +18,6 @@ head_ft = p_psf ./ gam; % Head, ft
 v_dot_ft3s = v_dot_orig ./ 12^3; % Volumetric flowrate, ft^3/s
 
 % Curve fit
-a = square_root_fit(head_ft, v_dot_ft3s);
+[a, R2] = square_root_fit(head_ft, v_dot_ft3s);
 func = @(h) a * h.^0.5;
 end
