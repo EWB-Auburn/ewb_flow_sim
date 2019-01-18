@@ -12,3 +12,12 @@ Add structure def for lower tank
 Break sprinkler curve fit into own file
 Break structure definition into own file
 Getter for arbitrary link/node (useful for debug)
+
+### ¿Ideas? ###
+
+Integrate hose head loss as links algorithmically added to structure instead of putting them in manually
+
+
+### Problems Found ###
+Incorrect R2 computation in square root curve fit. Minor effect.
+Incorrect implementation of hosepipe head losses. Major effect.
