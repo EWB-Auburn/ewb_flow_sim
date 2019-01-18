@@ -1,4 +1,6 @@
-%
+% Initializes the system structure for flow coming from the upper tank. The
+% two returned values, `root` and `leaves` represent the most upstream node
+% and a cell array of all leaves, respectively.
 function [root, leaves] = tank_1_init()
 % Load system parameters
 parameters;
