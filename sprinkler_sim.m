@@ -4,7 +4,7 @@ parameters;
 
 % Initialize the system structure
 global leaf_list;
-[root, leaf_list] = init();
+[root, leaf_list] = tank_1_init();
 
 % Run some number of pressure/flow calculation iterations
 n = 12;
