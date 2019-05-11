@@ -12,7 +12,13 @@ g     = 32.2    ; % acceleration of gravity, ft/s^2
 pressure_update_alpha = 0.75;
 
 leaf_limit = 5 / 448.83117; % maximum flowrate through leaves, ft^3/s
-hose_k = 1.08 * 50; % minor head loss coefficient for 50 feet of hose
+
+% Properties of the hose lengths
+hose_rough = 0.07 / 25.4 / 12; % upper bound roughness for tubing, ft
+hose_dia = 0.5 / 12; % hose diameter, ft
+hose_len = 50; % hose length, ft
+hose_dz = 0; % hose elevation change, ft
+hose_upstream_k = 0.4; % hose upstream minor head loss coefficient
 
 % Give a function handle here that will initialize the system structure.
 % This function must return both a root node and a cell array of leaves
