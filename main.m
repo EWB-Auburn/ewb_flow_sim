@@ -5,10 +5,13 @@ clear;
 init_funcs = {'tank_1_init', 'tank_2_init_lower_half', ...
     'tank_2_init_upper_half'};
 n = 12; % number if iterations to run
+
 for i = 1:length(init_funcs)
-    results = sprinkler_sim(str2func(init_funcs{i}), n);
-    
+    tic
     fprintf('%s\n', init_funcs{i});
+    results = sprinkler_sim(str2func(init_funcs{i}), n);
+    toc
+    
     % Display leaf head history
     for j = 1:length(results)
         fprintf('%2d: ', j);
