@@ -1,5 +1,5 @@
 % This script defines many useful parameters which may be used anywhere in
-% the program. A function or script my load these parameters by calling
+% the program. A function or script may load these parameters by calling
 % `parameters;`.
 
 % Properties of water at 40 deg F
@@ -17,4 +17,4 @@ hose_k = 1.08 * 50; % minor head loss coefficient for 50 feet of hose
 % Give a function handle here that will initialize the system structure.
 % This function must return both a root node and a cell array of leaves
 % (`root` and `leaves` respectively).
-init = @tank_1_init;
+init = @tank_2_init_lower_half; %FIXME Changed input
