@@ -5,7 +5,6 @@
 % tree with the same name.
 function element = get_element(root, name)
 % NOTE: this algorithm happens to implement depth-first search
-% fprintf('-----> %s\n', root.name); % Display current element
 if root.name == name
     element = root;
 elseif isa(root, 'flow_link')
