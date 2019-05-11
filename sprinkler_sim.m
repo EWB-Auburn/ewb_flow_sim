@@ -4,7 +4,7 @@ parameters;
 
 % Initialize the system structure
 global leaf_list;
-[root, leaf_list] = tank_1_init();
+[root, leaf_list] = init();
 
 % Run some number of pressure/flow calculation iterations
 n = 12;
@@ -25,7 +25,6 @@ for i = 1:length(leaf_list)
     end
     fprintf('\n');
 end
-
 
 
 % Given a node in the system, update the inbound head of every connected
