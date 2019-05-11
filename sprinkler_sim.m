@@ -1,4 +1,7 @@
-clear;
+% Given a pointer to a system initialization function `init`, run `n`
+% iterations of the simulation and return the head values of each leaf for
+% each iteration.
+function out = sprinkler_sim(init, n)
 % Load system parameters
 parameters;
 
@@ -7,7 +10,6 @@ global leaf_list;
 [root, leaf_list] = init();
 
 % Run some number of pressure/flow calculation iterations
-n = 12;
 leaf_heads = zeros(n, length(leaf_list));
 for i = 1:n
     root = update_node_pressure(root);
@@ -17,15 +19,8 @@ for i = 1:n
     end
 end
 
-% Display leaf head history
-for i = 1:length(leaf_list)
-    fprintf('%2d: ', i);
-    for j = (n-min(1-1, n-1)):1:n
-        fprintf('%4.0f ', leaf_heads(j, i));
-    end
-    fprintf('\n');
+out = leaf_heads;
 end
-
 
 % Given a node in the system, update the inbound head of every connected
 % link, and call update_link_pressure() on each of those links, which will
