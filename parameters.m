@@ -23,4 +23,4 @@ hose_upstream_k = 0.4; % hose upstream minor head loss coefficient
 % Give a function handle here that will initialize the system structure.
 % This function must return both a root node and a cell array of leaves
 % (`root` and `leaves` respectively).
-init = @tank_2_init_lower_half; %FIXME Changed input
+init = @tank_1_init;
