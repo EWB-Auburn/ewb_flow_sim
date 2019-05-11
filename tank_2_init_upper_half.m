@@ -10,9 +10,7 @@ leaf_count = 19;
 leaves = cell(leaf_count, 1);
 hose_flow = sprinkler_1_data();
 a = hose_flow(1);
-hose_velocity = @(flow) flow / (pi/4 * (0.5/12)^2);
-hose_loss = @(v) hose_k * hose_velocity(hose_flow(v))^2/2/g;
-flow_func = @(v) min(a * (v - hose_loss(v)).^0.5, leaf_limit);
+flow_func = @(v) min(a * v.^0.5, leaf_limit);
 
 
 for i = 1:leaf_count
@@ -116,6 +114,6 @@ S = flow_node('S', TS, -1);
 ltS = flow_link('ltS', S, pvc('3'), 300, -195.89, countl(S), k_thru);
 lt = flow_node('lt', ltS, -1);
 
-root = lt;
+root = add_hoses(lt);
 
 end

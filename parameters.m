@@ -19,8 +19,3 @@ hose_dia = 0.5 / 12; % hose diameter, ft
 hose_len = 50; % hose length, ft
 hose_dz = 0; % hose elevation change, ft
 hose_upstream_k = 0.4; % hose upstream minor head loss coefficient
-
-% Give a function handle here that will initialize the system structure.
-% This function must return both a root node and a cell array of leaves
-% (`root` and `leaves` respectively).
-init = @tank_1_init;
