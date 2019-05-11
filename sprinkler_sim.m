@@ -111,28 +111,3 @@ global leaf_list;
 l = leaf_list{index};
 flow = l.flow_function(l.head);
 end
-
-
-
-function n = dump_node(node)
-i = 1;
-fprintf('===================\n');
-disp(node);
-while i <= length(node.downstream_connections)
-    dump_link(node.downstream_connections(i));
-    i = i + 1;
-end
-n = 0;
-end
-
-function n = dump_link(link)
-fprintf('\n');
-disp(link);
-fprintf('%d, ', link.all_downstream_leaves);
-fprintf('\n');
-if ~isempty(link.downstream_node)
-    dump_node(link.downstream_node);
-end
-n = 0;
-end
-
