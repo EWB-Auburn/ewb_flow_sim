@@ -22,4 +22,5 @@ for i = 1:length(init_funcs)
         fprintf('%2d: %4.0f %4.1f\n', j, results(n, j), ...
             flow_func(results(n, j)) * 448.83117);
     end
+    fprintf('\n');
 end
