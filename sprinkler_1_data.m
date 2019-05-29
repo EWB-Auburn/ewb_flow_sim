@@ -1,9 +1,9 @@
 % Generate a curve fit for the sprinkler 1 data, collected Fall 2018. The
-% curve fit is returned as an anonymous function which takes head as an
-% input, and returns volumetric flowrate as an output.
+% curve fit is returned as the coefficient `a` such that 
+% V_dot = a * h.^0.5.
 %
 % Heads and flow rates use the foot-poundforce-second system of units.
-function [func, R2] = sprinkler_1_data()
+function [a, R2] = sprinkler_1_data()
 % Load system parameters
 parameters;
 
@@ -19,5 +19,4 @@ v_dot_ft3s = v_dot_orig ./ 12^3; % Volumetric flowrate, ft^3/s
 
 % Curve fit
 [a, R2] = square_root_fit(head_ft, v_dot_ft3s);
-func = @(h) a * h.^0.5;
 end
