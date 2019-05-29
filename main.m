@@ -14,7 +14,8 @@ for i = 1:length(init_funcs)
     results = sprinkler_sim(func, n);
     toc;
     
-    flow_func = sprinkler_1_data();
+    a = sprinkler_1_data();
+    flow_func = @(h) a * h.^0.5;
     
     fprintf('Leaf h_ft GPM\n');
     for j = 1:length(results)

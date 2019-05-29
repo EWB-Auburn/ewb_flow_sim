@@ -8,8 +8,7 @@ parameters;
 % Define the leaves first
 leaf_count = 19;
 leaves = cell(leaf_count, 1);
-hose_flow = sprinkler_1_data();
-a = hose_flow(1);
+a = sprinkler_1_data();
 flow_func = @(v) min(a * v.^0.5, leaf_limit);
 
 
