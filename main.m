@@ -7,18 +7,18 @@ init_funcs = {'tank_1_init', 'tank_2_init_lower_half', ...
 n = 12; % number if iterations to run
 
 for i = 1:length(init_funcs)
-    tic
     fprintf('%s\n', init_funcs{i});
-    results = sprinkler_sim(str2func(init_funcs{i}), n);
-    toc
+    func = str2func(init_funcs{i});
     
-    % Display leaf head history
+    tic;
+    results = sprinkler_sim(func, n);
+    toc;
+    
+    flow_func = sprinkler_1_data();
+    
+    fprintf('Leaf h_ft GPM\n');
     for j = 1:length(results)
-        fprintf('%2d: ', j);
-        for k = (n-min(1-1, n-1)):1:n
-            fprintf('%4.0f ', results(k, j));
-        end
-        fprintf('\n');
+        fprintf('%2d: %4.0f %4.1f\n', j, results(n, j), ...
+            flow_func(results(n, j)) * 448.83117);
     end
-    fprintf('\n');
 end
