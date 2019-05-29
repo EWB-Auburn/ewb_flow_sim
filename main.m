@@ -2,6 +2,7 @@
 % `sprinkler_sim()` for each of the `init_files` listed.
 
 clear;
+gpm_factor = 448.83117;
 init_funcs = {'tank_1_init', 'tank_2_init_lower_half', ...
     'tank_2_init_upper_half'};
 n = 12; % number if iterations to run
@@ -20,7 +21,8 @@ for i = 1:length(init_funcs)
     fprintf('Leaf h_ft GPM\n');
     for j = 1:length(results)
         fprintf('%2d: %4.0f %4.1f\n', j, results(n, j), ...
-            flow_func(results(n, j)) * 448.83117);
+            flow_func(results(n, j)) * gpm_factor);
     end
-    fprintf('\n');
+    fprintf('Total GPM: %3.0f\n\n', ...
+        sum(flow_func(results(n, :))) * gpm_factor);
 end
